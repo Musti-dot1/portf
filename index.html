@@ -23,6 +23,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- project modal styles -->
+  <style>
+    .project-item a { cursor: pointer; }
+    .project-modal-container {
+      position: fixed; inset: 0; z-index: 1000;
+      display: none; align-items: center; justify-content: center; padding: 18px;
+    }
+    .project-modal-container.active { display: flex; }
+    .project-modal-container .overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.75);
+      backdrop-filter: blur(3px); animation: fadeIn .2s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .project-modal {
+      position: relative; z-index: 2;
+      background: var(--eerie-black-2, #1e1e1f);
+      border: 1px solid var(--jet, #383838); border-radius: 16px;
+      width: 100%; max-width: 760px; max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 18px 50px rgba(0,0,0,.55); animation: fadeIn .25s ease;
+    }
+    .project-modal-img { width: 100%; display: block; border-radius: 16px 16px 0 0; }
+    .project-modal .modal-close-btn {
+      position: absolute; top: 12px; right: 12px; z-index: 3;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(0,0,0,.55); color: #fff; font-size: 18px;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+    }
+    .project-modal .modal-close-btn:hover { background: var(--orange-yellow-crayola, #ffdb70); color: #000; }
+    .project-modal-body { padding: 18px 24px 26px; color: var(--light-gray, #d6d6d6); }
+    .project-modal-body h4 { color: #fff; }
+    .project-modal-stack { color: var(--orange-yellow-crayola, #ffdb70); font-size: 13px; margin: 4px 0 14px; }
+    .project-modal-body p { font-size: 14px; line-height: 1.6; margin-bottom: 8px; }
+    .project-modal-body h5 { color: #fff; font-size: 14px; margin: 14px 0 6px; }
+    .project-modal-body ul { margin: 0 0 4px 18px; }
+    .project-modal-body li { font-size: 14px; line-height: 1.55; margin-bottom: 6px; }
+    .project-modal-body .impact { margin-top: 12px; }
+    .project-modal-body .note { margin-top: 14px; font-size: 12px; font-style: italic; color: #8b8b8b; }
+  </style>
 </head>
 
 <body>
@@ -48,7 +87,7 @@
         <div class="info-content">
           <h1 class="name" title="Mustafa Yunus Sheikh">Mustafa Yunus Sheikh</h1>
 
-          <p class="title">Business Analyst</p>
+          <p class="title">Data Analyst</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -207,7 +246,7 @@
 
         <section class="about-text">
           <p>
-           Hi, I’m Mustafa Yunus Sheikh, a Business Analyst who turns business questions into clear, data-driven answers. With a Master’s in Business Data Analytics and 3+ years of experience across healthcare, marketing, and the public sector, I specialize in gathering requirements, mapping processes, and building Power BI, SQL, and Excel reporting that helps leaders make confident decisions.
+           Hi, I’m Mustafa Yunus Sheikh, a Data Analyst who turns business questions into clear, data-driven answers. With a Master’s in Business Data Analytics and 3+ years of experience across healthcare, marketing, and the public sector, I specialize in cleaning and modeling data, building Power BI, SQL, and Excel reporting, and surfacing insights that help leaders make confident decisions.
           </p>
 
           <p>
@@ -622,15 +661,15 @@
             </li>
 
             <li class="filter-item">
-              <button data-filter-btn>Retail Analytics</button>
+              <button data-filter-btn>Healthcare</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Marketing</button>
             </li>
 
             <li class="filter-item">
               <button data-filter-btn>Operations</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Predictive</button>
             </li>
 
           </ul>
@@ -654,15 +693,15 @@
               </li>
 
               <li class="select-item">
-                <button data-select-item>Retail Analytics</button>
+                <button data-select-item>Healthcare</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Marketing</button>
               </li>
 
               <li class="select-item">
                 <button data-select-item>Operations</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Predictive</button>
               </li>
 
             </ul>
@@ -671,63 +710,121 @@
 
           <ul class="project-list">
 
-            <li class="project-item  active" data-filter-item data-category="Retail Analytics">
-              <a href="#">
+            <li class="project-item  active" data-filter-item data-category="Healthcare"
+                data-title="Healthcare Reporting &amp; Enrolment Dashboard"
+                data-stack="Power BI · SQL · DAX"
+                data-img="./assets/images/proj-health.png">
+              <a href="#" class="project-open">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/Retail.png" alt="Retail Sales Performance Dashboard" loading="lazy">
+                  <img src="./assets/images/proj-health.png" alt="Healthcare Reporting & Enrolment Dashboard" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Retail Sales Performance Dashboard</h3>
+                <h3 class="project-title">Healthcare Reporting &amp; Enrolment Dashboard</h3>
 
-                <p class="project-category">Power BI · SQL · Excel</p>
+                <p class="project-category">Power BI · SQL · DAX</p>
 
               </a>
+              <template class="project-detail">
+                <p><strong>Overview.</strong> A B2B healthcare platform had no real-time view of campaign performance or patient enrolment, relying on slow, error-prone Excel reports pulled from disconnected CRM and telehealth systems.</p>
+                <h5>What I did</h5>
+                <ul>
+                  <li>Gathered reporting requirements from sales, marketing, and product stakeholders.</li>
+                  <li>Consolidated CRM, telehealth, and enrolment data into a single source of truth and defined KPI &amp; validation rules.</li>
+                  <li>Built a live Power BI suite with DAX measures for campaign ROI, enrolment funnels, and executive KPIs.</li>
+                </ul>
+                <p class="impact"><strong>Impact:</strong> 40% faster reporting cycle, 20% fewer duplicate records, and real-time visibility for leadership.</p>
+                <p class="note">Representative dashboard built with sample data — original client data is confidential.</p>
+              </template>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="Operations">
-              <a href="#">
+            <li class="project-item  active" data-filter-item data-category="Marketing"
+                data-title="Marketing Campaign &amp; A/B Testing Analysis"
+                data-stack="Python · SQL · Power BI"
+                data-img="./assets/images/proj-campaign.png">
+              <a href="#" class="project-open">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/Project.png" alt="Food Delivery Operations Analysis" loading="lazy">
+                  <img src="./assets/images/proj-campaign.png" alt="Marketing Campaign & A/B Testing Analysis" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Food Delivery Operations Analysis</h3>
+                <h3 class="project-title">Marketing Campaign &amp; A/B Testing Analysis</h3>
 
-                <p class="project-category">Excel · Power BI · Python</p>
+                <p class="project-category">Python · SQL · Power BI</p>
 
               </a>
+              <template class="project-detail">
+                <p><strong>Overview.</strong> Paid-media spend was leaking through under-delivering vendors, and the team lacked evidence on what actually drove conversions.</p>
+                <h5>What I did</h5>
+                <ul>
+                  <li>Built a Python pipeline comparing contracted vs. actual ad delivery to flag vendor under-delivery.</li>
+                  <li>Ran A/B and multivariate tests with hypothesis testing to isolate true conversion drivers.</li>
+                  <li>Delivered role-based Power BI dashboards with row-level security on Azure SQL for self-serve reporting.</li>
+                </ul>
+                <p class="impact"><strong>Impact:</strong> Recovered 12% of under-delivered spend, +18% conversion lift on the winning variant, and +15% decision-making efficiency.</p>
+                <p class="note">Representative dashboard built with sample data — original client data is confidential.</p>
+              </template>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="Predictive">
-              <a href="#">
+            <li class="project-item  active" data-filter-item data-category="Operations"
+                data-title="Operations &amp; Recovery-Yield Dashboard"
+                data-stack="Excel/VBA · Power Automate · Power BI"
+                data-img="./assets/images/proj-ops.png">
+              <a href="#" class="project-open">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-4.png" alt="Financial Stress Prediction Model" loading="lazy">
+                  <img src="./assets/images/proj-ops.png" alt="Operations & Recovery-Yield Dashboard" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Financial Stress Prediction Model</h3>
+                <h3 class="project-title">Operations &amp; Recovery-Yield Dashboard</h3>
 
-                <p class="project-category">Python · Scikit-Learn</p>
+                <p class="project-category">Excel/VBA · Power Automate · Power BI</p>
 
               </a>
+              <template class="project-detail">
+                <p><strong>Overview.</strong> National compliance reporting across 50+ municipal zones was fully manual, slow, and at risk of missing audit deadlines, with no central view of material recovery performance.</p>
+                <h5>What I did</h5>
+                <ul>
+                  <li>Automated reconciliation and audit submission with an Excel/VBA + Power Automate workflow.</li>
+                  <li>Cleaned and consolidated fragmented vendor logs with SQL/Pandas into a validated dataset.</li>
+                  <li>Built executive Power BI dashboards with DAX KPIs for recovery yield and zone-level performance.</li>
+                </ul>
+                <p class="impact"><strong>Impact:</strong> 70% less manual effort, 100% on-time audit submission, and a strategy that lifted recovery yield by 19%.</p>
+                <p class="note">Representative dashboard built with sample data — original client data is confidential.</p>
+              </template>
             </li>
 
           </ul>
 
         </section>
+
+        <!-- project detail modal -->
+        <div class="project-modal-container" data-project-modal>
+          <div class="overlay" data-project-overlay></div>
+          <section class="project-modal">
+            <button class="modal-close-btn" data-project-close>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <img class="project-modal-img" data-project-img src="" alt="">
+            <div class="project-modal-body">
+              <h4 class="h3" data-project-title></h4>
+              <p class="project-modal-stack" data-project-stack></p>
+              <div data-project-detail></div>
+            </div>
+          </section>
+        </div>
 
       </article>
 
@@ -796,6 +893,42 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!-- project detail modal logic -->
+  <script>
+    (function () {
+      const modal = document.querySelector('[data-project-modal]');
+      if (!modal) return;
+      const imgEl = modal.querySelector('[data-project-img]');
+      const titleEl = modal.querySelector('[data-project-title]');
+      const stackEl = modal.querySelector('[data-project-stack]');
+      const detailEl = modal.querySelector('[data-project-detail]');
+
+      function openModal(item) {
+        imgEl.src = item.dataset.img;
+        imgEl.alt = item.dataset.title;
+        titleEl.innerHTML = item.dataset.title;
+        stackEl.textContent = item.dataset.stack;
+        const tpl = item.querySelector('.project-detail');
+        detailEl.innerHTML = tpl ? tpl.innerHTML : '';
+        modal.scrollTop = 0;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.project-item').forEach(function (item) {
+        const link = item.querySelector('a');
+        if (link) link.addEventListener('click', function (e) { e.preventDefault(); openModal(item); });
+      });
+      modal.querySelector('[data-project-close]').addEventListener('click', closeModal);
+      modal.querySelector('[data-project-overlay]').addEventListener('click', closeModal);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+    })();
+  </script>
 
 </body>
 
